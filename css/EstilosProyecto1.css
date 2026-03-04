@@ -1,0 +1,67 @@
+/* Paleta de colores pastel */
+:root {
+    --color-principal: #7a8d9a; /* Azul grisáceo */
+    --color-secundario: #b7c0c7; /* Gris claro */
+    --color-fondo: #e5ddd9; /* Beige */
+    --color-acento1: #f1d8cf; /* Rosa pastel */
+    --color-acento2: #dbbcb3; /* Piel suave */
+    --texto-oscuro: #2c3e50;
+}
+
+body {
+    background-color: var(--color-fondo);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--texto-oscuro);
+    line-height: 1.6;
+}
+
+.navbar-custom {
+    background-color: var(--color-principal);
+}
+
+.navbar-custom .navbar-brand, .navbar-custom .nav-link {
+    color: white !important;
+    font-weight: 500;
+}
+
+.navbar-custom .nav-link:hover {
+    color: var(--color-acento1) !important;
+}
+
+.card-custom {
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.card-custom:hover {
+    transform: translateY(-5px);
+}
+
+.header-seccion {
+    background-color: var(--color-acento1);
+    padding: 10px 20px;
+    border-radius: 8px;
+    border-left: 5px solid var(--color-acento2);
+    margin-bottom: 20px;
+}
+
+footer {
+    background-color: var(--color-secundario);
+    color: white;
+    padding: 20px 0;
+    margin-top: 50px;
+}
+
+.btn-custom {
+    background-color: var(--color-principal);
+    color: white;
+    border: none;
+}
+
+.btn-custom:hover {
+    background-color: var(--color-acento2);
+    color: var(--texto-oscuro);
+}
