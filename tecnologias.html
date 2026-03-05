@@ -16,8 +16,9 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="microservicios.html">Microservicios</a></li>
                 <li class="nav-item"><a class="nav-link active" href="tecnologias.html">Tecnologías API</a></li>
-                <li class="nav-item"><a class="nav-link" href="nube.html">Cloud</a></li>
+                <li class="nav-item"><a class="nav-link" href="nube.html">Cloud & Contenedores</a></li>
             </ul>
         </div>
     </div>
@@ -25,13 +26,13 @@
 
 <div class="container mt-5">
     
-    <div class="header-seccion">
-        <h2>Tecnologías de Web APIs y sus Subtemas</h2>
+    <div class="header-seccion mb-4">
+        <h2 class="text-white">Tecnologías de Web APIs y sus Subtemas</h2>
     </div>
     
     <div class="row mb-5">
         <div class="col-md-7">
-            <p>El ecosistema de las Web APIs es vasto y existen múltiples tecnologías y protocolos para su implementación, dependiendo de los requerimientos de velocidad, peso de los datos y tipado estricto. Las tecnologías subyacentes son fundamentales para el éxito de la comunicación entre sistemas.</p>
+            <p>El ecosistema de las Web APIs es vasto. Una API (Interfaz de Programación de Aplicaciones) es un conjunto de reglas que definen cómo las aplicaciones o dispositivos pueden conectarse y comunicarse entre sí.</p>
             
             <div class="accordion shadow-sm mb-4" id="accordionApis">
                 <div class="accordion-item">
@@ -42,31 +43,29 @@
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionApis">
                         <div class="accordion-body">
-                            Es el estilo arquitectónico más popular. Utiliza los estándares de la web (HTTP) y se basa en recursos (URLs). Es stateless (sin estado), lo que significa que cada petición del cliente contiene toda la información necesaria para que el servidor la entienda. Generalmente retorna datos en formato <strong>JSON</strong>, que es ligero y fácil de leer tanto para humanos como para máquinas.
+                            <p>Definido por primera vez en el año 2000 por el Dr. Roy Fielding, REST proporciona una gran flexibilidad, lo que lo ha convertido en el método más común para conectar microservicios. Las API REST se comunican mediante solicitudes HTTP para realizar operaciones CRUD (crear, leer, actualizar y eliminar), utilizando métodos como GET, POST, PUT y DELETE.</p>
+                            <p>Para que una API sea verdaderamente RESTful, debe cumplir con <strong>seis principios de diseño</strong>:</p>
+                            <ul>
+                                <li><strong>Interfaz uniforme:</strong> Todas las solicitudes para el mismo recurso deben verse igual, utilizando identificadores uniformes (URI).</li>
+                                <li><strong>Desacoplamiento cliente-servidor:</strong> Las aplicaciones de cliente y servidor deben ser completamente independientes.</li>
+                                <li><strong>Sin estado (Stateless):</strong> Cada solicitud debe incluir toda la información necesaria para procesarla; el servidor no almacena sesiones del cliente.</li>
+                                <li><strong>Capacidad de caché:</strong> Los recursos deben poder almacenarse en caché para mejorar el rendimiento.</li>
+                                <li><strong>Arquitectura en capas:</strong> La comunicación puede pasar por varios intermediarios sin que el cliente o servidor lo noten.</li>
+                                <li><strong>Código bajo demanda:</strong> Opcionalmente, se puede enviar código ejecutable al cliente.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                            GraphQL
+                            GraphQL y SOAP
                         </button>
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionApis">
                         <div class="accordion-body">
-                            Desarrollado por Facebook, GraphQL es un lenguaje de consulta para APIs. Soluciona el problema de "Over-fetching" (traer datos de más) y "Under-fetching" (traer datos de menos) de REST, permitiendo al cliente solicitar exactamente los campos específicos que necesita en una sola petición.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                            SOAP y XML
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionApis">
-                        <div class="accordion-body">
-                            SOAP (Simple Object Access Protocol) es un protocolo más antiguo, altamente tipado y estricto, que utiliza exclusivamente <strong>XML</strong> para el intercambio de mensajes. Aunque es más pesado y complejo que REST, sigue siendo muy utilizado en entornos empresariales y financieros debido a sus robustos estándares de seguridad integrados (WS-Security).
+                            <p><strong>GraphQL:</strong> Desarrollado por Facebook, es un lenguaje de consulta que permite al cliente solicitar exactamente los datos que necesita, evitando traer información de más o de menos.</p>
+                            <p><strong>SOAP y XML:</strong> SOAP impone un marco estricto a los desarrolladores. Es un protocolo más antiguo y altamente tipado que utiliza exclusivamente XML para el intercambio de mensajes, destacando en entornos empresariales por su alta seguridad.</p>
                         </div>
                     </div>
                 </div>
@@ -81,21 +80,52 @@
         </div>
     </div>
 
-    <div class="header-seccion mt-5">
-        <h2>Manejo de Contenedores</h2>
+    <div class="header-seccion mt-5 mb-4">
+        <h2 class="text-white">Seguridad en APIs: JSON Web Token (JWT)</h2>
+    </div>
+    <div class="row align-items-center mb-5">
+        <div class="col-md-5">
+            <div class="card card-custom p-4 shadow-sm border-start border-4 border-warning">
+                <h5 class="text-warning text-dark">Estructura de un JWT</h5>
+                <p>Un JWT consta de tres partes separadas por puntos (<code>.</code>):</p>
+                <ol>
+                    <li><strong>Header (Encabezado):</strong> Indica el algoritmo utilizado y el tipo de token.</li>
+                    <li><strong>Payload (Carga útil):</strong> Contiene los datos de autenticación (como correos o roles) e información de expiración.</li>
+                    <li><strong>Signature (Firma):</strong> Garantiza la integridad del token verificando que no haya sido alterado, combinando el header, payload y una clave secreta.</li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <p>Debido a que las APIs REST "no tienen estado" (no guardan la sesión del usuario), necesitan un mecanismo para identificar quién realiza las peticiones. Aquí es donde entra <strong>JWT (JSON Web Token)</strong>.</p>
+            <p>Un JWT es un estándar para la autenticación y el intercambio de información definido por RFC7519. Funciona como una credencial digital segura: una vez que el usuario inicia sesión correctamente, el servidor genera este token y se lo entrega al cliente.</p>
+            <p><strong>¿Cómo se utiliza en el Frontend?</strong></p>
+            <p>Para acceder a rutas protegidas (como ver el saldo en un banco), la aplicación frontend debe incluir este token en los encabezados (headers) de su petición HTTP, específicamente en el campo de <code>'Authorization'</code>. El servidor verificará la firma del token; si es válida y no ha expirado, permitirá el acceso al recurso solicitado.</p>
+        </div>
+    </div>
+
+    <div class="header-seccion mt-5 mb-4">
+        <h2 class="text-white">Manejo de Contenedores</h2>
     </div>
     <div class="row align-items-center mb-5">
         <div class="col-md-5 order-2 order-md-1">
             <img src="https://images.unsplash.com/photo-1605745341112-85968b19335b?auto=format&fit=crop&w=600&q=80" class="img-fluid rounded shadow" alt="Cajas de contenedores simulando Docker">
         </div>
         <div class="col-md-7 order-1 order-md-2 mb-4 mb-md-0">
-            <p>El manejo de contenedores, popularizado masivamente por herramientas como <strong>Docker</strong>, ha revolucionado la forma en que empaquetamos y distribuimos software. Un contenedor es una unidad estándar de software que empaqueta el código y todas sus dependencias para que la aplicación se ejecute de forma rápida y confiable de un entorno informático a otro.</p>
-            <p>A diferencia de las máquinas virtuales (VMs) que virtualizan el hardware y requieren un sistema operativo invitado completo y pesado, los contenedores virtualizan el sistema operativo a nivel del núcleo. Esto los hace extremadamente ligeros y rápidos de iniciar. El "Manejo" de estos contenedores implica la creación de imágenes (a través de un <em>Dockerfile</em>), la publicación en registros (como Docker Hub) y, a nivel empresarial, la orquestación de miles de ellos utilizando plataformas como <strong>Kubernetes</strong> para asegurar alta disponibilidad y balanceo de carga.</p>
+            <p>El manejo de contenedores ha revolucionado la distribución de software. Los contenedores son paquetes de software ligeros que incluyen el código de las aplicaciones junto con todas sus dependencias, como versiones concretas de entornos de ejecución y bibliotecas indispensables.</p>
+            
+            <p>A diferencia de las máquinas virtuales que virtualizan a nivel de hardware y requieren un sistema operativo invitado completo, los contenedores virtualizan a nivel del sistema operativo y comparten el kernel del SO anfitrión. Esto los hace extremadamente ligeros y eficientes en el uso de memoria.</p>
+            
+            <p>Entre sus principales ventajas destacan:</p>
+            <ul>
+                <li><strong>Portabilidad total:</strong> Se pueden ejecutar de manera uniforme en cualquier lugar, desde el portátil personal de un desarrollador hasta centros de datos privados o la nube pública.</li>
+                <li><strong>Separación de responsabilidades:</strong> Los desarrolladores se centran en la lógica de la aplicación y sus dependencias, mientras que los equipos de operaciones de TI operan el despliegue sin preocuparse por configuraciones específicas de software.</li>
+                <li><strong>Aislamiento de aplicaciones:</strong> Proporcionan una vista del sistema operativo (CPU, memoria, almacenamiento y red) lógicamente aislada de las demás aplicaciones.</li>
+            </ul>
         </div>
     </div>
 </div>
 
-<footer class="text-center">
+<footer class="text-center py-4 mt-5 bg-light">
     <p>Desarrollado por: Juan Pablo Villarreal Zamarripa</p>
 </footer>
 
